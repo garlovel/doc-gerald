@@ -1,0 +1,211 @@
+##############################
+ Amazon Seller  Overview
+##############################
+
+Identifier Encoding Standards [#encode]_
+========================================
+
+Check digit encodings in bar code systems have the following design:
+
+A weight function array and a modulo rule are defined based on the encoding::
+
+	W = [ w1,w2,w3,w4,w5,...,wn ]; modulo = M
+
+The digits of the number to be encoded are converted to an array::
+
+	[ a1,a2,a3,a4,a5,...,an ]
+
+Now sum the array products and take the modulo of the result::
+
+	0 = sum( [ a1,a2,a3,a4,...,an ] * [ w1,w2,w3,w4,...,wn ] ) mod M
+
+A valid check digit, the right-most digit, is chosen to produce the modulo remainder zero.
+To accomodate leading zeros (i.e., on the left), the arrays above are generated indexing right-to-left. Where the modulo `M` is greater than `10`, a rule for encoding results `10` or above to single check characters must be introduced. For example, *ISBN-10* uses modulo `11`, and `10` is represented as `X` in the check digit.
+
++--------+----------------------------------+------+--------------------------+
+|Encoding|Weight                            |Modulo|Check Representation      |
++========+==================================+======+==========================+
+|ISBN-10 | [ 1,2,3,4,5,6,7,8,9,10 ]         | 11   | [ 10 ] --> [ X ]         |
++--------+----------------------------------+------+--------------------------+
+|ISBN-13 | [ 1,3,1,3,1,3,1,3,1,3,1,3,1 ]    | 10   |                          |
++--------+----------------------------------+------+--------------------------+
+|EAN-13  | [ 1,3,1,3,1,3,1,3,1,3,1,3,1 ]    | 10   |                          |
++--------+----------------------------------+------+--------------------------+
+|UPC     | [ 1,3,1,3,1,3,1,3,1,3,1,3 ]      | 10   |                          |
++--------+----------------------------------+------+--------------------------+
+
+Examples::
+
+	ISBN-10:
+	 0-8493-9640-9
+	 [9,0,4,6,9,3,9,4,8,0] * [1,2,3,4,5,6,7,8,9,10] = [9,0,12,24,45,18,63,32,72,0]
+	 sum( [9,0,12,24,45,18,63,32,72,0] ) = 275
+	 275 mod 11 = 0
+
+	ISBN-13 or EAN-13:
+	 978-0-8493-9640-3
+	 [3,0,4,6,9,3,9,4,8,0,8,7,9] * [1,3,1,3,...,1] = [3,0,4,18,9,9,9,12,8,0,8,21,9]
+	 sum( [3,0,4,18,9,9,9,12,8,0,8,21,9] ) = 110
+	 110 mod 10 = 0
+
+	UPC-12:
+	 036000241457
+	 [7,5,4,1,4,2,0,0,0,6,3,0] * [1,3,1,3,1,3,1,3,1,3,1,3] = [7,15,4,3,4,6,0,0,0,18,3,0]
+	 sum( [7,15,4,3,4,6,0,0,0,18,3,0] ) = 60
+	 60 mod 10 = 0
+
+.. Note::
+
+	EAN prefixes 978 and 979 have been reserved for books. The *EAN-13* numbers with prefix 978 are convertible to *ISBN-10*, and vice versa, by recalculating the check digit. UPC and 979-prefix EAN numbers are assigned by separate authorities, and are not convertible.
+
+Source Seller files
+==============================
+
+
+World Publishers
+""""""""""""""""""""""""""""""
+
++---+-------------------+-----------+----------------------------------------+
+|Col|Heading            |Column ID  |Short Description & Notes               |
++===+===================+===========+========================================+
+| A |PIC                |           |Link to worldpub.com cover image        |
++---+-------------------+-----------+----------------------------------------+
+| B |Item               |           |Worldpub stock number                   |
++---+-------------------+-----------+----------------------------------------+
+| C |Description        |Title      |Book or item title, starts with !!      |
++---+-------------------+-----------+----------------------------------------+
+| D |Net Available      |Available  |Qty in eaches                           |
++---+-------------------+-----------+----------------------------------------+
+| E |Retail             |Price      |Undiscounted price from reseller        |
++---+-------------------+-----------+----------------------------------------+
+| F |CatDesc            |           |Category description                    |
++---+-------------------+-----------+----------------------------------------+
+| G |Subject            |           |Subject category                        |
++---+-------------------+-----------+----------------------------------------+
+| H |Pack               |           |Case count, Economic order quantity     |
++---+-------------------+-----------+----------------------------------------+
+| I |ISBN               |           |scanned ISBN-10 or ISBN-13              |
++---+-------------------+-----------+----------------------------------------+
+| J |UPC                |ISBN-13    |ISBN-13, not an actual UPC              |
++---+-------------------+-----------+----------------------------------------+
+| K |Author             |Author     |                                        |
++---+-------------------+-----------+----------------------------------------+
+| L |Publisher          |Publisher  |                                        |
++---+-------------------+-----------+----------------------------------------+
+| M |Original List price|List       |                                        |
++---+-------------------+-----------+----------------------------------------+
+| M |Size               |Size       |                                        |
++---+-------------------+-----------+----------------------------------------+
+| N |Pages              |Pages      |                                        |
++---+-------------------+-----------+----------------------------------------+
+| O |Prod Type          |Type       |HB=hardback, PB=paperback, etc.         |
++---+-------------------+-----------+----------------------------------------+
+
+
+AOB Analysis Tools
+==============================
+
+.. Note::
+	An AOB demonstration login is available, with Username :kbd:`test` and Password :kbd:`test`.
+
+AOB Lightning Lister
+""""""""""""""""""""""""""""""
+
+Art of Books offers a Lightning Lister page where a user can paste in a list of 500 or more *ISBN-13* book codes, and display a frame listing corresponding *ISBN-10* data along with some additional information from Amazon. An off-label use for this feature is to convert *ISBN-13* to *ISBN-10* when a programmatic conversion is not available. Information returned follows.
+
++---+-------------+------------------------------+
+|I/O| Column ID   | Description                  |
++===+=============+==============================+
+| I |ISBN-13      |                              |
++---+-------------+------------------------------+
+| O |ISBN-10      |                              |
++---+-------------+------------------------------+
+| O |Title        |                              |
++---+-------------+------------------------------+
+| O |List         |Amazon original list price    |
++---+-------------+------------------------------+
+| O |Lowest_Used  |Amazon lowest used price      |
++---+-------------+------------------------------+
+| O |Lowest_New   |Amazon lowest new price       |
++---+-------------+------------------------------+
+| O |Rank         |Amazon sales rank (hover text)|
++---+-------------+------------------------------+
+
+Results from the AOB Lightning Lister are not essential to the listing process as this Amazon data will be retrieved from a complete Amazon search anyway. The Lightning Lister step will be deprecated.
+
+AOB Amazon analysis Upload
+""""""""""""""""""""""""""""""""""
+
+Art of Books provides a special login for uploading large input files to a batch-process which returns extensive Amazon analysis data. Input to this process is a tab-delimited text file with 2 columns containing *ISBN-10* numbers and corresponding costs. For the World Publishers example data, both of these columns are derived. The *ISBN-10* is generated from the *ISBN-13*, and the cost is calculated as *PRICE ** ( 1 - DISCOUNT )*.  Sample data is shown below::
+
+	ISBN-10	        COST
+	2067106341    	0.90
+	2061009336	0.90
+	1595012338	0.67
+	0932366007	0.90
+	1585475416	2.70
+	206711994X	0.90
+
+.. Tip:: A screen-shot of the upload page should appear here.
+
+A description of how to automate the upload of this file is not provided. (A web automation tool should work.) The AOB Amazon Analysis process takes about 5 minutes per thousand items, and the results may be retrieved from their site via ftp. The ftp login and retrieval process is not documented here. Amazon data returned by AOB is illustrated below:
+
++-------------------+---------------------------------------------------------+
+|Column heading     |Example data                                             |
++===================+=========================================================+
+|ISBN-10            |2067106341                                               |
++-------------------+---------------------------------------------------------+
+|Purch Price        |0.90                                                     |
++-------------------+---------------------------------------------------------+
+|List Price         |9.95                                                     |
++-------------------+---------------------------------------------------------+
+|Title              |Michelin France Centre (Michelin Maps) (French Edition)  |
++-------------------+---------------------------------------------------------+
+|Author             |Creator-Michelin Travel Publications                     |
++-------------------+---------------------------------------------------------+
+|Count In Inv       |0                                                        |
++-------------------+---------------------------------------------------------+
+|amz Lowest Overall |3.96                                                     |
++-------------------+---------------------------------------------------------+
+|amz Lowest New     |164.15                                                   |
++-------------------+---------------------------------------------------------+
+|amz Num New        |4                                                        |
++-------------------+---------------------------------------------------------+
+|amz Sales Rank     |1822994                                                  |
++-------------------+---------------------------------------------------------+
+|Weight(oz)         |3                                                        |
++-------------------+---------------------------------------------------------+
+|amu Lowest Overall |2.40104045086204                                         |
++-------------------+---------------------------------------------------------+
+|amu Lowest New     |31.1301564011071                                         |
++-------------------+---------------------------------------------------------+
+|amu Num New        |4                                                        |
++-------------------+---------------------------------------------------------+
+|amu Sales Rank     |581567                                                   |
++-------------------+---------------------------------------------------------+
+|amc Lowest Overall |12.984141024831                                          |
++-------------------+---------------------------------------------------------+
+|amc Lowest New     |230.62909374276                                          |
++-------------------+---------------------------------------------------------+
+|amc Num New        |1                                                        |
++-------------------+---------------------------------------------------------+
+|amc Sales Rank     |623370                                                   |
++-------------------+---------------------------------------------------------+
+
+
+Pricing and Purchase Analysis
+===============================
+
+Automatic selection rules should be applied to suppress items in the returned file which are not profitable to purchase. Sample rules follow:
+
++---------------------------------------+--------+----------------------------+
+| Selection Rule                        | Action | Notes                      |
++=======================================+========+============================+
+|*lowest new* LT 8.00                   |SUPPRESS| Might miss rare used books |
++---------------------------------------+--------+----------------------------+
+|*Purch Price* GT *lowest new* / .3     |SUPPRESS|                            |
++---------------------------------------+--------+----------------------------+
+
+-----------
+
+.. [#encode] http://www.hahnlibrary.net/libraries/isbncalc.html provides a working ISBN validator and conversion calculator (followed by an erroneous description of the calculation). 

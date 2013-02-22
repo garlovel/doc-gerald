@@ -1,0 +1,75 @@
+#############################
+Resume for Gerald Lovel
+#############################
+
+Skills
+=============================
+
+Management
+""""""""""""""""
+
+Business owner with operational oversight responsibilities and experience from business plan development to documentation writing and user support. Mentoring cross-discipline teams developing and marketing business ventures and Internet applications.
+
+Programming
+""""""""""""""""
+
+Can differentiate between REST, SOAP, and RPC models of web development. Advocate for DRY methods in MVC design, and using Agile development instead of waterfall practices.
+
++ Career skill in Pick BASIC using Advanced Revelation and OpenInsight
++ Rudimentary knowledge of HTML/CSS
++ Beginner with Ruby on Rails
++ Can write a BASH script in a pinch
+
+Software
+""""""""""""""""
+
++ Use LibreOffice, GoogleApps, and other office productivity apps
++ Acquainted with graphics tools such as Inkscape, GIMP, and others
++ Manage projects with Redmine project manager, Git, RST/Sphinxdoc, and other apps 
++ Aware of Kompozer, Eclipse, RadiantCMS, and other software development tools
+
+Experience
+===============================
+
+6/2007 -- Present
+""""""""""""""""""""
+
+Founder, AAltSys Technology, Inc., aaltsys.com, ph. 901.276.1004
+
+AAltSys Technology applies open-source operating systems and software to recreate enterprise data center capabilities within a single office server box. Initial product release to market occurred in April of 2011.
+
+7/1991 -- Present
+""""""""""""""""""""
+
+Owner, Customware Solutions, Inc., Memphis, TN, ph. 901.276.1004.
+
+Built WARES management system for 3rd-party warehouses, a large-scale multiuser desktop application using Advanced Revelation, which is still in use throughout the US. This involved in-depth knowledge of inventory control, logistics, procedures, and 3rd-party billing.
+
+Programmed  commercial EDI*Atlas software (standards viewer, mapper, database connector, translator, and communications module) for application integration.  Used internally but not released in market.
+
+6/1989 -- 6/1991
+""""""""""""""""""""
+
+Senior Technical Developer, Catalog Media Corporation, Memphis, TN.
+
+Developed financial analysis software for Catalog Marketing Partners to manage Federal Express accounts. Supervised a project to interface a multiuser database system with Apple Macintosh client computers in a very early demonstration of client-server technology.
+
+Education
+===============================
+
+12/1975
+""""""""""""""""""""
+
+Southeastern Louisiana University: BS Mathematics
+
+5/1981
+""""""""""""""""""""
+
+Louisiana State University: BS Mechanical Engineering
+
+Notable Activities
+===============================
+
+Participant in various LaunchMemphis activities: Business Plan Bootcamp, Social Media Barcamp, and 48-Hour Launch. Working with two startups formed during 48-Hour Launch events.
+
+ 
