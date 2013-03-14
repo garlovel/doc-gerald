@@ -12,21 +12,6 @@ Set ws display configuration
 
 + :download:`Automated XRandR </_downloads/XRandR.sh>` 
 
-Create Sphinx doc project
-=============================
-
-+ :download:`Sphinx project script </_downloads/doc-newproject.sh>`
-
-Add Sphinx doc to project 
-=============================
-
-+ :download:`Add Sphinx to project script </_downloads/doc-addbranch.sh>`
-
-Deploy docs to GitHub & c.
-=============================
-
-+ :download:`Repository-based deployment </_downloads/doc-deploy.sh>` 
-
 Deploy docs to officeserver
 =============================
 
