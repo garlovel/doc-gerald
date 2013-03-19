@@ -2,6 +2,8 @@
 Workstation Scripts
 #############################
 
+Testing deployment.
+
 Turn VPN off and on:
 =============================
 
