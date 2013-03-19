@@ -1,26 +1,20 @@
-.. Gerald Lovel documentation master file, created by
-   sphinx-quickstart on Fri Feb 22 10:38:52 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Gerald Lovel, created by sphinx-quickstart on Fri Feb 22 10:38:52 2013.
 
 Table of Contents:
 ====================
-
-.. toctree::
-   :hidden:
-
-   _static/404
 
 .. toctree::
    :maxdepth: 2
    :glob:
    
    [0-9]*
+   
+   :hidden:
+
+   _static/404
 
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
