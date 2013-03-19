@@ -1,0 +1,25 @@
+#################
+  404
+#################
+
+.. sidebar:: 404: A common Internet meme.
+
+  *Meaning:*
+  
+  | "I am not going to help you, so 
+  | go back to where you came from."
+  
+  .. image :: _images/404_toast.jpg
+  
+  *Other meanings:*
+  
+  | You're toast.
+
+URL did not compute:
+=====================
+ 
+| **404 = "NOT FOUND HERE"**. You may have typed badly.
+| It might be that the referenced document has moved.
+| In any event, there is no further assistance available.
+
+ 
