@@ -4,17 +4,18 @@ Table of Contents:
 ====================
 
 .. toctree::
-   :hidden:
-
-   _static/404
-
    :maxdepth: 2
    :glob:
    
    [0-9]*
 
+.. toctree::
+   :hidden:
+
+   _static/404
+   
 Indices and tables
 ==================
 
-* :ref:`search`
+:ref:`search`
 
