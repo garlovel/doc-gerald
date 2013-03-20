@@ -8,11 +8,6 @@ Table of Contents:
    :glob:
    
    [0-9]*
-
-.. toctree::
-   :hidden:
-
-   _static/404
    
 Indices and tables
 ==================
