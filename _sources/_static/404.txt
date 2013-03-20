@@ -9,7 +9,8 @@
   | "I am not going to help you, so 
   | go back to where you came from."
   
-  .. image :: ../_images/404_toast.jpg
+  .. image :: ../_images/404_toast.jpg 
+     :name: toast
   
   *Other meanings:*
   
