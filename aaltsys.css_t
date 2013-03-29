@@ -16,6 +16,20 @@ body {
 
 /* -- body styles ----------------------------------------------------------- */
 
-table {
-    margin: 0 0 0 0; 
+table, table.docutils {
+  margin: 0 -0.75em 0 -0.75em;
+  border-collapse: separate;
+  border-spacing: .25em;
+}
+
+table th, table td, table.docutils th, table.docutils td {
+  padding: 0 0.5em 0 0.5em;
+}
+
+th p, td p, th p.first.last, td p.first.last {
+  margin: 0 0 0 0; 
+}
+
+.admonition table, .warning table {
+  margin: 0 0.5em 0 0.5em;
 }
